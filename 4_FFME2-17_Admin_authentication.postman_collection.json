@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "b1f1fc10-762d-4ebc-a87c-0b597aaf8114",
+		"name": "4_FFME2-17_Admin_authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Positive",
+			"item": [
+				{
+					"name": "1.4  FFME-17 To_see__admin_is_Authenticated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c6b77e3c-0286-4db7-af45-3655eabef23f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody)\r",
+									"\r",
+									"var schema= {\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"data\": 347,\r",
+									"            \"status\": \"success\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"data\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"data\": {\r",
+									"            \"$id\": \"#/properties/data\",\r",
+									"            \"type\": \"integer\",\r",
+									"            \"title\": \"The data schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": 0,\r",
+									"            \"examples\": [\r",
+									"                347\r",
+									"            ]\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"success\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test('Schema Validation', function() {\r",
+									"  var result=tv4.validateResult(pm.response.json(), schema);\r",
+									"    if(!result.valid){\r",
+									"        console.log(result);\r",
+									"    }\r",
+									"    pm.expect(result.valid).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDEwNjg5NzcsImlhdCI6MTYwMTA2NTM3Nywic3ViIjozNDcsInVzZXJfdHlwZSI6IkRhc2hib2FyZCIsIm5hbWUiOiJNciBhYmMiLCJlbWFpbCI6ImNhbGlmb3JuaWFAeWFob28uY29tIiwibWVtYmVyX3R5cGUiOjIsImNvbXBhbnlfaWQiOjE3NSwiZGVzaWduYXRpb24iOm51bGwsImRlcGFydG1lbnQiOm51bGx9.njRMDV67Equ6vVzXFcYFSmgmKB1hAoFD-HPiTP_TAUs",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{authUrl}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "167.99.73.130:30287/api/v1/field-force/auth/authenticate-dashboard-user",
+							"host": [
+								"167",
+								"99",
+								"73",
+								"130"
+							],
+							"port": "30287",
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"authenticate-dashboard-user"
+							]
+						},
+						"description": "BRD: Techserve4u admin and company admin should be able to authenticate for the admin panel.\r\n\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Fuad Ahmed\r\nReviewer: Pranto Majumder\r\n\r\n\r\nMakes a get request with Bearer Token as Authorization parameter in the Header configuration.\r\n\r\nRequest Header:\r\n\t- Authorization: 'Bearer $JWT_auth_token'\r\n\r\nResponds back the user_id and a success message"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
